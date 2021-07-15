@@ -28,7 +28,7 @@ const serverUrl = 'http://localhost:3000/api/sample?data=';
 
 let server = net.createServer(function (socket) {
     console.log('client connected');
-    // socket.write('Echo server\r\n');
+    socket.write('Echo server\r\n');
     socket.pipe(socket);
 
     socket.on('end', function () {
@@ -40,7 +40,7 @@ let server = net.createServer(function (socket) {
         console.log('data came in', str);
 
         // send data to server
-        // axios.get(serverUrl + str);
+         axios.get(serverUrl + str);
     });
 
     socket.on('error', function (error) {
