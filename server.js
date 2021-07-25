@@ -1,5 +1,5 @@
 const express = require('express');
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 const LOCAL_IP = '0.0.0.0';
 const axios = require('axios').default;
 const net = require('net');
@@ -20,7 +20,7 @@ wss.on('connection', (ws) => {
     });
 });*/
 
-const serverUrl = 'http://localhost:3000/api/sample?data=';
+const serverUrl = 'http://localhost:3001/api/sample?data=';
 // const serverUrl  = 'https://gtag930.herokuapp.com/api/sample?data=';
 
 
@@ -28,7 +28,7 @@ const serverUrl = 'http://localhost:3000/api/sample?data=';
 
 let server = net.createServer(function (socket) {
     console.log('client connected');
-    socket.write('Echo server\r\n');
+    // socket.write('Echo server\r\n');
     socket.pipe(socket);
 
     socket.on('end', function () {
@@ -39,8 +39,17 @@ let server = net.createServer(function (socket) {
         let str = data.toString();
         console.log('data came in', str);
 
+
+        // todo unit should send json like : {unitId: 'XYZ', 'cmd': 'requestConfiguration'}
+
+        if (str.toLowerCase() === 'send configuration') {
+            console.log('unit want to check for configuration');
+            socket.emit('new config');
+            return;
+        }
+
         // send data to server
-         axios.get(serverUrl + str);
+        axios.get(serverUrl + str);
     });
 
     socket.on('error', function (error) {
