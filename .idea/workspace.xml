@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="913ac7b2-5d1f-494e-bfcf-97acf61216d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
       <workItem from="1627321990629" duration="1033000" />
       <workItem from="1627555434455" duration="4045000" />
       <workItem from="1627893183681" duration="2021000" />
-      <workItem from="1628400946809" duration="602000" />
+      <workItem from="1628400946809" duration="2833000" />
     </task>
     <task id="LOCAL‎00001" summary="new socket">
       <created>1626251683643</created>
@@ -65,7 +64,13 @@
       <option name="presentableId" value="LOCAL‎00003" />
       <updated>1627206323091</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎00004" summary="domain">
+      <created>1628491859789</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1628491859789</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,28 +79,33 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new socket" />
     <MESSAGE value="ports" />
-    <option name="LAST_COMMIT_MESSAGE" value="ports" />
+    <MESSAGE value="domain" />
+    <option name="LAST_COMMIT_MESSAGE" value="domain" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1627206321823">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1628491858515">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1627206321823" />
-    <state x="543" y="262" key="Github.ShareDialog" timestamp="1626251575511">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1628491858515" />
+    <state x="543" y="262" key="Github.ShareDialog" timestamp="1628492094719">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="543" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1626251575511" />
+    <state x="543" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1628492094719" />
     <state x="498" y="69" key="Github.UntrackedFilesDialog" timestamp="1626251603724">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="498" y="69" key="Github.UntrackedFilesDialog/0.0.1366.728@0.0.1366.728" timestamp="1626251603724" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1627206326128">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1628491869779">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1627206326128" />
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1627202308226">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1628491869779" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1628543599302">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1627202308226" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1628543599302" />
+    <state x="453" y="265" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1628543590780">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="453" y="265" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.728@0.0.1366.728" timestamp="1628543590780" />
   </component>
 </project>
