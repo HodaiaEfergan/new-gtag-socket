@@ -5,7 +5,7 @@ const axios = require('axios').default;
 const net = require('net');
 const mongoose = require('mongoose');
 
-const serverUrl = 'http://localhost:3001/api/sample?data=';
+const serverUrl = 'https://set930.herokuapp.com/api/';
 const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 //connection to db and print "mongodb connected"
@@ -42,7 +42,7 @@ let server = net.createServer(function (socket) {
         }
 
         // send data to server
-        axios.get(serverUrl + str);
+        axios.get(serverUrl + /sample?data= + str);
     });
 
     socket.on('error', function (error) {
