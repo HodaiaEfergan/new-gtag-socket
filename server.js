@@ -3,25 +3,17 @@ const PORT = process.env.PORT || 3001;
 const LOCAL_IP = '0.0.0.0';
 const axios = require('axios').default;
 const net = require('net');
-
-/*// test
-// const serverUrl  = 'http://localhost:3000/api/sample?data=';
-const serverUrl  = 'https://gtag930.herokuapp.com/api/sample?data=';
-const server = express()
-    .listen(PORT, () => console.log(`Listening on ${PORT}`));
-const { Server } = require('ws');
-const wss = new Server({ server });
-wss.on('connection', (ws) => {
-    console.log('Client connected');
-    ws.on('close', () => console.log('Client disconnected'));
-    ws.on('message', function incoming(message) {
-        console.log('received: %s', message);
-        axios.get(serverUrl + message);
-    });
-});*/
+const mongoose = require('mongoose');
 
 const serverUrl = 'http://localhost:3001/api/sample?data=';
-// const serverUrl  = 'https://gtag930.herokuapp.com/api/sample?data=';
+const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+
+//connection to db and print "mongodb connected"
+mongoose
+    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+    .then(() => console.log('mongodb connected'))
+    .catch(err => console.error(err));
+
 
 
 // tcp socket server
@@ -44,7 +36,8 @@ let server = net.createServer(function (socket) {
 
         if (str.toLowerCase() === 'send configuration') {
             console.log('unit want to check for configuration');
-            socket.emit('new config');
+            socket.emit("work")
+            socket.emit(unit.unitId.getConfiguration());
             return;
         }
 
