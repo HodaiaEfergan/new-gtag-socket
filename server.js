@@ -3,6 +3,8 @@ const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
 const net = require('net');
 
+const app = express();
+
 const serverUrl = 'https://set930.herokuapp.com/api/';
 
 
@@ -19,20 +21,23 @@ let server = net.createServer(function (socket) {
 
     socket.on('data', function (data) {
         let str = data.toString();
-        console.log('data came in', str);
+        //  console.log('data came in', str);
 
-
-        // todo unit should send json like : {unitId: 'XYZ', 'cmd': 'requestConfiguration'}
+        if (str.toLowerCase().startsWith('uid')) {
+            console.log('sample came in');
+            // send data to server
+            axios.get(serverUrl + '/sample?data=' + str);
+        }
 
         if (str.toLowerCase() === 'send configuration') {
             console.log('unit want to check for configuration');
-            socket.emit("work")
+            socket.emit("work");
             socket.emit(unit.unitId.getConfiguration());
             return;
         }
 
-        // send data to server
-        axios.get(serverUrl + '/sample?data=' + str);
+        console.log('invalid data came');
+
     });
 
     socket.on('error', function (error) {
@@ -46,5 +51,14 @@ let server = net.createServer(function (socket) {
 });
 
 server.listen(PORT, () => {
-    console.log('listening...');
+    console.log('socket server is listening on port ' + PORT);
+});
+
+
+app.get('/', (req, res) => {
+    res.json({message: 'Hi from g-tag server'});
+});
+
+app.listen(3000, () => {
+    console.log('http server is listening on port ' + 3000);
 });
