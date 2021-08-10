@@ -1,20 +1,9 @@
 const express = require('express');
-const PORT = process.env.PORT || 80;
-const LOCAL_IP = '0.0.0.0';
+const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
 const net = require('net');
-const mongoose = require('mongoose');
 
 const serverUrl = 'https://set930.herokuapp.com/api/';
-const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
-//connection to db and print "mongodb connected"
-// test
-mongoose
-    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
-    .then(() => console.log('mongodb connected'))
-    .catch(err => console.error(err));
-
 
 
 // tcp socket server
