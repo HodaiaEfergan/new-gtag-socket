@@ -1,11 +1,20 @@
 const express = require('express');
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
+const LOCAL_IP = '0.0.0.0';
 const axios = require('axios').default;
 const net = require('net');
-
-const app = express();
+const mongoose = require('mongoose');
 
 const serverUrl = 'https://set930.herokuapp.com/api/';
+const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+
+//connection to db and print "mongodb connected"
+// test
+mongoose
+    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+    .then(() => console.log('mongodb connected'))
+    .catch(err => console.error(err));
+
 
 
 // tcp socket server
@@ -21,23 +30,20 @@ let server = net.createServer(function (socket) {
 
     socket.on('data', function (data) {
         let str = data.toString();
-        //  console.log('data came in', str);
+        console.log('data came in', str);
 
-        if (str.toLowerCase().startsWith('uid')) {
-            console.log('sample came in');
-            // send data to server
-            axios.get(serverUrl + '/sample?data=' + str);
-        }
+
+        // todo unit should send json like : {unitId: 'XYZ', 'cmd': 'requestConfiguration'}
 
         if (str.toLowerCase() === 'send configuration') {
             console.log('unit want to check for configuration');
-            socket.emit("work");
+            socket.emit("work")
             socket.emit(unit.unitId.getConfiguration());
             return;
         }
 
-        console.log('invalid data came');
-
+        // send data to server
+        axios.get(serverUrl + '/sample?data=' + str);
     });
 
     socket.on('error', function (error) {
@@ -51,8 +57,9 @@ let server = net.createServer(function (socket) {
 });
 
 server.listen(PORT, () => {
-    console.log('socket server is listening on port ' + PORT);
+    console.log('listening...');
 });
+
 
 
 app.get('/', (req, res) => {
