@@ -66,6 +66,6 @@ app.get('/', (req, res) => {
     res.json({message: 'Hi from g-tag server'});
 });
 
-app.listen(3000, () => {
-    console.log('http server is listening on port ' + 3000);
+app.listen(3001, () => {
+    console.log('http server is listening on port ' + 3001);
 });
