@@ -7,10 +7,11 @@ const app = express();
 
 const serverUrl = 'https://set930.herokuapp.com/api/';
 
+const SOCKET_PORT = 9090;
+
 
 // tcp socket server
-
-let server = net.createServer(function (socket) {
+let socketServer = net.createServer(function (socket) {
     console.log('client connected');
     // socket.write('Echo server\r\n');
     socket.pipe(socket);
@@ -21,22 +22,22 @@ let server = net.createServer(function (socket) {
 
     socket.on('data', function (data) {
         let str = data.toString();
-        //  console.log('data came in', str);
+        console.log('data came in', str);
 
         if (str.toLowerCase().startsWith('uid')) {
             console.log('sample came in');
-            // send data to server
-            axios.get(serverUrl + '/sample?data=' + str);
-        }
-
-        if (str.toLowerCase() === 'send configuration') {
-            console.log('unit want to check for configuration');
-            socket.emit("work");
-            socket.emit(unit.unitId.getConfiguration());
+            axios.get(serverUrl + 'sample?data=' + data);
             return;
         }
 
-        console.log('invalid data came');
+
+        if (str.toLowerCase() === 'send configuration') {
+            console.log('unit want to check for configuration');
+            socket.emit('new config');
+            return;
+        }
+
+        console.log('invalid data');
 
     });
 
@@ -50,15 +51,6 @@ let server = net.createServer(function (socket) {
     });
 });
 
-server.listen(PORT, () => {
-    console.log('socket server is listening on port ' + PORT);
-});
-
-
-app.get('/', (req, res) => {
-    res.json({message: 'Hi from g-tag server'});
-});
-
-app.listen(3000, () => {
-    console.log('http server is listening on port ' + 3000);
+socketServer.listen(SOCKET_PORT, () => {
+    console.log('socket server is listening on port ' + SOCKET_PORT);
 });
