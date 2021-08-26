@@ -14,6 +14,7 @@ const SOCKET_PORT = 9090;
 let socketServer = net.createServer(function (socket) {
     console.log('client connected');
     // socket.write('Echo server\r\n');
+    if(socket==null)return;
     socket.pipe(socket);
 
     socket.on('end', function () {
