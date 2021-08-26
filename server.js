@@ -20,24 +20,30 @@ let socketServer = net.createServer(function (socket) {
         console.log('client disconnected');
     });
 
+
     socket.on('data', function (data) {
-        let str = data.toString();
-        console.log('data came in', str);
+        try {
+            if (data == null) return;
+            let str = data.toString();
+            console.log('data came in', str);
 
-        if (str.toLowerCase().startsWith('uid')) {
-            console.log('sample came in');
-            axios.get(serverUrl + 'sample?data=' + data);
-            return;
+            if (str.toLowerCase().startsWith('uid')) {
+                console.log('sample came in');
+                axios.get(serverUrl + 'sample?data=' + data);
+                return;
+            }
+
+
+            if (str.toLowerCase() === 'send configuration') {
+                console.log('unit want to check for configuration');
+                socket.emit('new config');
+                return;
+            }
+
+            console.log('invalid data');
+        } catch (e) {
+            log.error('***********************     error in onData   *********************** error in onData', e);
         }
-
-
-        if (str.toLowerCase() === 'send configuration') {
-            console.log('unit want to check for configuration');
-            socket.emit('new config');
-            return;
-        }
-
-        console.log('invalid data');
 
     });
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="913ac7b2-5d1f-494e-bfcf-97acf61216d8" name="Default Changelist" comment="multi server">
+    <list default="true" id="913ac7b2-5d1f-494e-bfcf-97acf61216d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="503">
+              <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -33,6 +33,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -135,7 +136,8 @@
       <workItem from="1627893183681" duration="2021000" />
       <workItem from="1628400946809" duration="2833000" />
       <workItem from="1628585164834" duration="1956000" />
-      <workItem from="1629671071454" duration="190000" />
+      <workItem from="1629671071454" duration="1411000" />
+      <workItem from="1629996262446" duration="45000" />
     </task>
     <task id="LOCAL‎00001" summary="new socket">
       <created>1626251683643</created>
@@ -182,11 +184,25 @@
       <option name="project" value="LOCAL" />
       <updated>1628587904631</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="new docket server that sends data to heroku">
+      <created>1629671296509</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629671296509</updated>
+    </task>
+    <task id="LOCAL-00009" summary="new docket server that sends data to heroku">
+      <created>1629671319123</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1629671319123</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2146000" />
+    <option name="totallyTimeSpent" value="3412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="942" extended-state="0" />
@@ -197,7 +213,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23058824" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -222,7 +238,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
     <MESSAGE value="multi server" />
-    <option name="LAST_COMMIT_MESSAGE" value="multi server" />
+    <MESSAGE value="new docket server that sends data to heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="new docket server that sends data to heroku" />
   </component>
   <component name="WindowStateProjectService">
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1628491858515">
@@ -253,8 +270,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="503">
+          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
         </state>
       </provider>
     </entry>
