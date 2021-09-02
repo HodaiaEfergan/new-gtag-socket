@@ -2,6 +2,7 @@ const express = require('express');
 const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
 const net = require('net');
+const Unit = require('../model/unit.model');
 
 const app = express();
 // test
@@ -13,11 +14,10 @@ const SOCKET_PORT = 9090;
 // tcp socket server
 let socketServer = net.createServer(function (socket) {
     console.log('client connected');
-    socket.write('its work?????????????');
-     
-    socket.write('Echo server\r\n');
+     socket.write('Echo server\r\n');
+
     if(socket==null)return;
-    socket.pipe(socket);
+    //socket.pipe(socket);
 
     socket.on('end', function () {
         console.log('client disconnected');
@@ -30,8 +30,8 @@ let socketServer = net.createServer(function (socket) {
         res.send({ data: 'data emmited' })
     });
 
-    socket.on('data', function (data) {
-        try {
+    socket.on  ('data', function (data) {
+        try  {
             if (data == null) return;
             let str = data.toString();
             console.log('data came in', str);
@@ -42,10 +42,13 @@ let socketServer = net.createServer(function (socket) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
                 let unit = Unit.findOne({unitId: uid}).populate('configuration');
-                console.log(unit.configuration);
+                console.log(unit.getConfiguration());
+
 
                 return;
             }
+
+
             if (str.toLowerCase() === 'Send Configuration') {
                 console.log('unit want to check for configuration');
                 broadcast(data); //emit data to all clients
@@ -62,11 +65,11 @@ let socketServer = net.createServer(function (socket) {
             if (str.indexOf('Send') !== -1) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-              
+                console.log(unit?.uid.getConfiguration());
                 socket.emit("work");
                 broadcast(data); //emit data to all clients
                 res.send({ data: 'data emmited' })
-                socket.emit(uid.getConfiguration());
+                socket.emit(unit?.uid.getConfiguration());
                 return;
             }
 
