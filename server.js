@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
@@ -52,8 +54,8 @@ let socketServer = net.createServer(function (socket) {
                 axios.get(serverUrl + 'sample?data=' + data);
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-                let unit = Unit.findOne({unitId: uid}).populate('configuration');
-                console.log(unit.getConfiguration());
+                //let unit = Unit.findOne({unitId: uid}).populate('configuration');
+                
 
 
                 return;
@@ -76,7 +78,7 @@ let socketServer = net.createServer(function (socket) {
             if (str.indexOf('Send') !== -1) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-                
+                console.log(unit?.uid.getConfiguration());
                 socket.emit("work");
                 broadcast(data); //emit data to all clients
                 res.send({ data: 'data emmited' })
@@ -104,6 +106,7 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
+
 
 
 
