@@ -63,7 +63,7 @@ let socketServer = net.createServer(function (socket) {
             if (str.indexOf('Send') !== -1) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-                console.log(uid.getConfiguration());
+              
                 socket.emit("work");
                 broadcast(data); //emit data to all clients
                 res.send({ data: 'data emmited' })
