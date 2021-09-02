@@ -22,7 +22,11 @@ let socketServer = net.createServer(function (socket) {
     });
 
 
-
+    app.post('/contact', (req, res) => {
+        const data = { hello: 'hello' }
+        broadcast(data); //emit data to all clients
+        res.send({ data: 'data emmited' })
+    });
 
     socket.on('data', function (data) {
         try {
@@ -45,6 +49,11 @@ let socketServer = net.createServer(function (socket) {
                 socket.emit('new config');
                 return;
             }
+            app.post('/contact', (req, res) => {
+                const data = { hello: 'hello' }
+                broadcast(data); //emit data to all clients
+                res.send({ data: 'data emmited' })
+            });
             if (str.indexOf('Send') !== -1) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
@@ -76,7 +85,6 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
-
 
 
 
