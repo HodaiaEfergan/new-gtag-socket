@@ -22,6 +22,8 @@ let socketServer = net.createServer(function (socket) {
     });
 
 
+
+
     socket.on('data', function (data) {
         try {
             if (data == null) return;
@@ -38,6 +40,14 @@ let socketServer = net.createServer(function (socket) {
             if (str.toLowerCase() === 'send configuration') {
                 console.log('unit want to check for configuration');
                 socket.emit('new config');
+                return;
+            }
+            if (str.indexOf('Send') !== -1) {
+                let uid = str.substring('UID'.length, data.indexOf(' Send'));
+                console.log(uid);
+                console.log(unit?.uid.getConfiguration());
+                socket.emit("work");
+                socket.emit(unit?.uid.getConfiguration());
                 return;
             }
 
@@ -61,3 +71,6 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
+
+
+
