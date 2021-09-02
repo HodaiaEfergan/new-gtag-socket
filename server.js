@@ -41,7 +41,7 @@ let socketServer = net.createServer(function (socket) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
                 console.log(uid.getConfiguration());
-                socket.write(uid.getConfiguration());
+                
                 axios.get(serverUrl + 'sample?data=' + data);
                 return;
             }
