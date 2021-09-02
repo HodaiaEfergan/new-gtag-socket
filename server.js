@@ -37,8 +37,11 @@ let socketServer = net.createServer(function (socket) {
             }
 
 
-            if (str.toLowerCase() === 'send configuration') {
+            if (str.toLowerCase() === 'Send Configuration') {
                 console.log('unit want to check for configuration');
+                broadcast(data); //emit data to all clients
+                res.send({ data: 'data emited' })
+
                 socket.emit('new config');
                 return;
             }
@@ -47,6 +50,8 @@ let socketServer = net.createServer(function (socket) {
                 console.log(uid);
                 console.log(unit?.uid.getConfiguration());
                 socket.emit("work");
+                broadcast(data); //emit data to all clients
+                res.send({ data: 'data emmited' })
                 socket.emit(unit?.uid.getConfiguration());
                 return;
             }
@@ -71,6 +76,7 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
+
 
 
 
