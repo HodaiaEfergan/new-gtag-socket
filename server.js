@@ -38,15 +38,14 @@ let socketServer = net.createServer(function (socket) {
 
             if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
+                axios.get(serverUrl + 'sample?data=' + data);
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-              
-                
-                axios.get(serverUrl + 'sample?data=' + data);
+                let unit = Unit.findOne({unitId: uid}).populate('configuration');
+                console.log(unit.configuration);
+
                 return;
             }
-
-
             if (str.toLowerCase() === 'Send Configuration') {
                 console.log('unit want to check for configuration');
                 broadcast(data); //emit data to all clients
