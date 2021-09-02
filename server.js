@@ -2,7 +2,18 @@ const express = require('express');
 const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
 const net = require('net');
-const Unit = require('../model/unit.model');
+//to use mongodb
+const mongoose = require('mongoose');
+// mongodb+srv://admin:<password>@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+//from the atlas mongodb
+const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+
+//connection to db and print "mongodb connected"
+mongoose
+    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+    .then(() => console.log('mongodb connected'))
+    .catch(err => console.error(err));
+
 
 const app = express();
 // test
