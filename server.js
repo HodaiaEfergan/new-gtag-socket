@@ -1,56 +1,49 @@
 const express = require('express');
-const PORT = process.env.PORT || 9090;
-const LOCAL_IP = '0.0.0.0';
+const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
 const net = require('net');
-const mongoose = require('mongoose');
 
-const serverUrl = 'https://set930.herokuapp.com/api/';
-const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
-//connection to db and print "mongodb connected"
+const app = express();
 // test
-mongoose
-    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
-    .then(() => console.log('mongodb connected'))
-    .catch(err => console.error(err));
+const serverUrl = 'https://set930.herokuapp.com/api/';
 
+const SOCKET_PORT = 9090;
 
 
 // tcp socket server
-
-let server = net.createServer(function (socket) {
+let socketServer = net.createServer(function (socket) {
     console.log('client connected');
     // socket.write('Echo server\r\n');
-    if(socket==null)return ;
+    if(socket==null)return;
     socket.pipe(socket);
 
     socket.on('end', function () {
         console.log('client disconnected');
     });
 
+
     socket.on('data', function (data) {
-        try{
+        try {
+            if (data == null) return;
             let str = data.toString();
             console.log('data came in', str);
 
-
-            // todo unit should send json like : {unitId: 'XYZ', 'cmd': 'requestConfiguration'}
-
-            if (str.indexOf(Send) !== -1) {
-                let uid = str.substring('UID'.length, data.indexOf(' Send'));
-                console.log(uid);
-                console.log(unit?.uid.getConfiguration());
-                socket.emit("work");
-                socket.emit(unit?.uid.getConfiguration());
+            if (str.toLowerCase().startsWith('uid')) {
+                console.log('sample came in');
+                axios.get(serverUrl + 'sample?data=' + data);
                 return;
             }
 
-            // send data to server
-            axios.get(serverUrl + '/sample?data=' + str);
-        }
-        catch (e) {
-           console.error(e);
+
+            if (str.toLowerCase() === 'send configuration') {
+                console.log('unit want to check for configuration');
+                socket.emit('new config');
+                return;
+            }
+
+            console.log('invalid data');
+        } catch (e) {
+            log.error('***********************     error in onData   *********************** error in onData', e);
         }
 
     });
@@ -65,6 +58,6 @@ let server = net.createServer(function (socket) {
     });
 });
 
-server.listen(PORT, () => {
-    console.log('listening...');
+socketServer.listen(SOCKET_PORT, () => {
+    console.log('socket server is listening on port ' + SOCKET_PORT);
 });
