@@ -14,6 +14,10 @@ const SOCKET_PORT = 9090;
 let socketServer = net.createServer(function (socket) {
     console.log('client connected');
     socket.write('its work?????????????');
+     let uid = str.substring('UID'.length, data.indexOf(' Send'));
+    console.log(uid);
+    console.log(unit?.uid.getConfiguration());
+     socket.write(unit?.uid.getConfiguration());
     socket.write('Echo server\r\n');
     if(socket==null)return;
     socket.pipe(socket);
