@@ -39,7 +39,7 @@ let socketServer = net.createServer(function (socket) {
             if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
-               
+                console.log(uid);
                 
                 axios.get(serverUrl + 'sample?data=' + data);
                 return;
