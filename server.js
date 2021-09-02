@@ -67,7 +67,7 @@ let socketServer = net.createServer(function (socket) {
                 socket.emit("work");
                 broadcast(data); //emit data to all clients
                 res.send({ data: 'data emmited' })
-                socket.emit(unit?.uid.getConfiguration());
+                socket.emit(uid.getConfiguration());
                 return;
             }
 
