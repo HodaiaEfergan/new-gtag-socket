@@ -28,7 +28,6 @@ const schema = new mongoose.Schema({
 
 const Unit = mongoose.model('Unit', schema);
 module.exports = Unit;
-
 const confschema = new mongoose.Schema({
     name: {type: String, required: true},
     sms: {type: Boolean, default: false},
@@ -115,16 +114,16 @@ let socketServer = net.createServer(function (socket) {
             let str = data.toString();
             console.log('data came in', str);
 
-            // if (str.toLowerCase().startsWith('uid')) {
+            if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
                 axios.get(serverUrl + 'sample?data=' + data);
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
 
-                let unit = Unit.findOne({unitId: uid});
+                let unit = Unit.findOne({unitId: uid}).populate('configuration');
                 console.log(unit.configuration);
                 return;
-            // }
+            }
 
 
             if (str.toLowerCase() === 'Send Configuration') {
@@ -171,9 +170,6 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
-
-
-
 
 
 
