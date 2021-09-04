@@ -34,13 +34,17 @@ let socketServer = net.createServer(function (socket) {
             if (str.toLowerCase().endsWith('send configuration')) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log('unit want to check for configuration ' + uid);
-                clients[uid] = socket;
+                // clients[uid] = socket;
 
                 // get unit config from the other server
-                let res = await axios.get(serverUrl + 'u-config?uid=' + uid);
-                console.log(res.data);
+                try {
+                    let res = await axios.get(serverUrl + 'u-config?uid=' + uid);
+                    console.log(res.data);
 
-                socket.write('123');
+                    socket.write('123');
+                } catch (e) {
+                    console.error('could not get unit config ', e);
+                }
                 return;
             }
 
@@ -50,7 +54,6 @@ let socketServer = net.createServer(function (socket) {
                 axios.get(serverUrl + 'sample?data=' + data);
                 return;
             }
-
 
 
             console.log('invalid data');
