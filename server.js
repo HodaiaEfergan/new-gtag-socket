@@ -114,41 +114,24 @@ let socketServer = net.createServer(function (socket) {
             let str = data.toString();
             console.log('data came in', str);
 
-            if (str.toLowerCase().startsWith('uid')) {
+            if (str.toLowerCase() === 'Send Configuration') {
                 console.log('sample came in');
                 axios.get(serverUrl + 'sample?data=' + data);
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log("************************");
                 console.log(str);
                 console.log(uid);
-
                 let unit = Unit.find({unitId: uid});
                 console.log(unit.configuration);
                 return;
             }
 
 
-            if (str.toLowerCase() === 'Send Configuration') {
-                console.log('unit want to check for configuration');
-                broadcast(data); //emit data to all clients
-                res.send({ data: 'data emited' })
 
-                socket.emit('new config');
-                return;
-            }
-            app.post('/contact', (req, res) => {
-                const data = { hello: 'hello' }
-                broadcast(data); //emit data to all clients
-                res.send({ data: 'data emmited' })
-            });
             if (str.indexOf('Send') !== -1) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-                console.log(unit?.uid.getConfiguration());
                 socket.emit("work");
-                broadcast(data); //emit data to all clients
-                res.send({ data: 'data emmited' })
-                socket.emit(unit?.uid.getConfiguration());
                 return;
             }
 
