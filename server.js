@@ -67,7 +67,7 @@ let socketServer = net.createServer(function (socket) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
 
-                let unit = Unit.findOne({unitId: uid}).populate('configuration');
+                 let unit = Unit.findOne({unitId: uid});
                 console.log(unit.configuration);
                 return;
             }
