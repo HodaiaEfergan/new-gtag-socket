@@ -122,8 +122,8 @@ let socketServer = net.createServer(function (socket) {
                 console.log(str);
                 console.log(uid);
 
-                let unit = Unit.findOne({unitId: uid}).populate('configuration');
-                console.log(unit);
+                let unit = Unit.find({unitId: uid});
+                console.log(unit.configuration);
                 return;
             }
 
