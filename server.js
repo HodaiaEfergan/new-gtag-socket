@@ -4,17 +4,20 @@ const axios = require('axios').default;
 const net = require('net');
 
 const app = express();
-// test
-const serverUrl = 'https://set930.herokuapp.com/api/';
+
+// const serverUrl = 'https://set930.herokuapp.com/api/';
+const serverUrl = 'http://localhost:3000/api/';
 
 const SOCKET_PORT = 9090;
 
+let clients = {};
 
 // tcp socket server
 let socketServer = net.createServer(function (socket) {
+
     console.log('client connected');
     // socket.write('Echo server\r\n');
-    if(socket==null)return;
+    if (socket == null) return;
     socket.pipe(socket);
 
     socket.on('end', function () {
@@ -22,11 +25,12 @@ let socketServer = net.createServer(function (socket) {
     });
 
 
-    socket.on('data', function (data) {
+    socket.on('data', async function (data) {
         try {
             if (data == null) return;
             let str = data.toString();
-            console.log('data came in', str);
+            // console.log('data came in', str);
+
 
             if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
@@ -35,10 +39,18 @@ let socketServer = net.createServer(function (socket) {
             }
 
 
-            if (str.toLowerCase() === 'send configuration') {
-                console.log('unit want to check for configuration');
-                socket.emit('new config');
+            if (str.toLowerCase().endsWith('send configuration')) {
+                let uid = str.substring('UID'.length, data.indexOf(' Send'));
+                console.log('unit want to check for configuration ' + uid);
+                clients[uid] = socket;
+
+                // get unit config from the other server
+                let res = await axios.get(serverUrl + 'u-config?uid=' + uid);
+                console.log(res.data);
+
+                socket.write('123');
                 return;
+
             }
 
             console.log('invalid data');
