@@ -5,8 +5,8 @@ const net = require('net');
 
 const app = express();
 
-// const serverUrl = 'https://set930.herokuapp.com/api/';
-const serverUrl = 'http://localhost:3000/api/';
+const serverUrl = 'https://set930.herokuapp.com/api/';
+// const serverUrl = 'http://localhost:3000/api/';
 
 const SOCKET_PORT = 9090;
 
