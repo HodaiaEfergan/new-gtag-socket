@@ -61,16 +61,16 @@ let socketServer = net.createServer(function (socket) {
             let str = data.toString();
             console.log('data came in', str);
 
-            if (str.toLowerCase().startsWith('uid')) {
+            // if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
                 axios.get(serverUrl + 'sample?data=' + data);
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
 
-                 let unit = Unit.findOne({unitId: uid});
+                let unit = Unit.findOne({unitId: uid});
                 console.log(unit.configuration);
                 return;
-            }
+            // }
 
 
             if (str.toLowerCase() === 'Send Configuration') {
