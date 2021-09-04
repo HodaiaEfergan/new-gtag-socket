@@ -68,6 +68,7 @@ let socketServer = net.createServer(function (socket) {
                 console.log(uid);
 
                 let unit = Unit.findOne({unitId: uid});
+                console.log("**************");
                 console.log(unit.configuration);
                 return;
             // }
