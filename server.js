@@ -1,4 +1,3 @@
-
 const express = require('express');
 const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
@@ -29,6 +28,61 @@ const schema = new mongoose.Schema({
 
 const Unit = mongoose.model('Unit', schema);
 module.exports = Unit;
+
+const schema = new mongoose.Schema({
+    name: {type: String, required: true},
+    sms: {type: Boolean, default: false},
+    call: {type: Boolean, default: false},
+    email: {type: Boolean, default: false},
+    enabled: {type: Boolean, default: true},
+
+    cpuTemp: {
+        type: {
+            enabled: {type: Boolean, default: true},
+            min: {type: Number, default: 0},
+            max: {type: Number, default: 0},
+        }
+    },
+    smsTemp: {
+        type: {
+            enabled: {type: Boolean, default: true},
+            min: {type: Number, default: 20},
+            max: {type: Number, default: 30},
+        }
+    },
+
+    lowBat: {
+        type: {
+            enabled: {type: Boolean, default: true},
+            value: {type: Number, default: 20},
+        }
+    },
+
+    alertMethods: {
+        type: {
+            sms: {
+                type: {
+                    enabled: {type: Boolean, default: false},
+                    number: {type: String, default: ''},
+                }
+            },
+            email: {
+                type: {
+                    enabled: {type: Boolean, default: false},
+                    email: {type: String, default: ''},
+                }
+            },
+            sendAlertsFromServer: {type: Boolean, default: true},
+            sendAlertsFromUnit: {type: Boolean, default: false},
+
+        }
+    }
+}, {timestamps: true});
+
+
+const Configuration = mongoose.model('Configuration', schema);
+module.exports = Configuration;
+
 const app = express();
 // test
 const serverUrl = 'https://set930.herokuapp.com/api/';
@@ -68,7 +122,6 @@ let socketServer = net.createServer(function (socket) {
                 console.log(uid);
 
                 let unit = Unit.findOne({unitId: uid});
-                console.log("**************");
                 console.log(unit.configuration);
                 return;
             // }
