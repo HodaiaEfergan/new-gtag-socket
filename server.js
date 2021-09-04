@@ -1,12 +1,12 @@
 
-
 const express = require('express');
 const PORT = process.env.PORT || 8080;
 const axios = require('axios').default;
 const net = require('net');
 //to use mongodb
 const mongoose = require('mongoose');
-// mongodb+srv://admin:<password>@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+
 //from the atlas mongodb
 const db = 'mongodb+srv://idan:koko1234@g-tag-930.l1iqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
@@ -16,7 +16,8 @@ mongoose
     .then(() => console.log('mongodb connected'))
     .catch(err => console.error(err));
 
-
+const Unit = mongoose.model('Unit');
+module.exports = Unit;
 const app = express();
 // test
 const serverUrl = 'https://set930.herokuapp.com/api/';
@@ -30,7 +31,7 @@ let socketServer = net.createServer(function (socket) {
      socket.write('Echo server\r\n');
 
     if(socket==null)return;
-    //socket.pipe(socket);
+    socket.pipe(socket);
 
     socket.on('end', function () {
         console.log('client disconnected');
@@ -43,8 +44,8 @@ let socketServer = net.createServer(function (socket) {
         res.send({ data: 'data emmited' })
     });
 
-    socket.on  ('data', function (data) {
-        try  {
+    socket.on  ('data', function (data)  {
+         try  {
             if (data == null) return;
             let str = data.toString();
             console.log('data came in', str);
@@ -54,10 +55,9 @@ let socketServer = net.createServer(function (socket) {
                 axios.get(serverUrl + 'sample?data=' + data);
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log(uid);
-                //let unit = Unit.findOne({unitId: uid}).populate('configuration');
-                
 
-
+                let unit = Unit.findOne({unitId: uid}).populate('configuration');
+                console.log(unit);
                 return;
             }
 
@@ -106,7 +106,6 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
-
 
 
 
