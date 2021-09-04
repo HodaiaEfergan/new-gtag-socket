@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+            <state relative-caret-position="351">
+              <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -139,7 +139,7 @@
       <workItem from="1629671071454" duration="1411000" />
       <workItem from="1629996262446" duration="1070000" />
       <workItem from="1630786235609" duration="2932000" />
-      <workItem from="1630790773082" duration="14000" />
+      <workItem from="1630790773082" duration="1456000" />
     </task>
     <task id="LOCAL‎00001" summary="new socket">
       <created>1626251683643</created>
@@ -242,11 +242,25 @@
       <option name="project" value="LOCAL" />
       <updated>1630788531666</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="get config in sample">
+      <created>1630790800319</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1630790800319</updated>
+    </task>
+    <task id="LOCAL-00017" summary="get config in sample2">
+      <created>1630793677396</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1630793677396</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7383000" />
+    <option name="totallyTimeSpent" value="8825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="942" extended-state="0" />
@@ -288,7 +302,9 @@
     <MESSAGE value="sending config" />
     <MESSAGE value="sending config 2" />
     <MESSAGE value="parse data fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="parse data fix" />
+    <MESSAGE value="get config in sample" />
+    <MESSAGE value="get config in sample2" />
+    <option name="LAST_COMMIT_MESSAGE" value="get config in sample2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1628491858515">
@@ -344,8 +360,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        <state relative-caret-position="351">
+          <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
         </state>
       </provider>
     </entry>
