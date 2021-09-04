@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="645">
+              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -138,7 +138,7 @@
       <workItem from="1628585164834" duration="1956000" />
       <workItem from="1629671071454" duration="1411000" />
       <workItem from="1629996262446" duration="1070000" />
-      <workItem from="1630786235609" duration="1760000" />
+      <workItem from="1630786235609" duration="2050000" />
     </task>
     <task id="LOCAL‎00001" summary="new socket">
       <created>1626251683643</created>
@@ -213,11 +213,25 @@
       <option name="project" value="LOCAL" />
       <updated>1629996380368</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="sending config">
+      <created>1630788136722</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630788136722</updated>
+    </task>
+    <task id="LOCAL-00013" summary="sending config 2">
+      <created>1630788166484</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1630788166484</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6197000" />
+    <option name="totallyTimeSpent" value="6487000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="942" extended-state="0" />
@@ -229,7 +243,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.23058824" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.32" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.11882353" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -256,7 +270,9 @@
     <MESSAGE value="new docket server that sends data to heroku" />
     <MESSAGE value="try catch" />
     <MESSAGE value="null check" />
-    <option name="LAST_COMMIT_MESSAGE" value="null check" />
+    <MESSAGE value="sending config" />
+    <MESSAGE value="sending config 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="sending config 2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1628491858515">
@@ -289,12 +305,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server.js</url>
-          <line>47</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server.js</url>
           <line>17</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
@@ -320,8 +330,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="645">
+          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
         </state>
       </provider>
     </entry>

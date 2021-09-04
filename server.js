@@ -31,14 +31,6 @@ let socketServer = net.createServer(function (socket) {
             let str = data.toString();
             // console.log('data came in', str);
 
-
-            if (str.toLowerCase().startsWith('uid')) {
-                console.log('sample came in');
-                axios.get(serverUrl + 'sample?data=' + data);
-                return;
-            }
-
-
             if (str.toLowerCase().endsWith('send configuration')) {
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log('unit want to check for configuration ' + uid);
@@ -50,8 +42,16 @@ let socketServer = net.createServer(function (socket) {
 
                 socket.write('123');
                 return;
-
             }
+
+
+            if (str.toLowerCase().startsWith('uid')) {
+                console.log('sample came in');
+                axios.get(serverUrl + 'sample?data=' + data);
+                return;
+            }
+
+
 
             console.log('invalid data');
         } catch (e) {
