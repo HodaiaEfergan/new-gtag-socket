@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
 const Unit = mongoose.model('Unit', schema);
 module.exports = Unit;
 
-const schema = new mongoose.Schema({
+const confschema = new mongoose.Schema({
     name: {type: String, required: true},
     sms: {type: Boolean, default: false},
     call: {type: Boolean, default: false},
@@ -80,7 +80,7 @@ const schema = new mongoose.Schema({
 }, {timestamps: true});
 
 
-const Configuration = mongoose.model('Configuration', schema);
+const Configuration = mongoose.model('Configuration', confschema);
 module.exports = Configuration;
 
 const app = express();
@@ -171,6 +171,9 @@ let socketServer = net.createServer(function (socket) {
 socketServer.listen(SOCKET_PORT, () => {
     console.log('socket server is listening on port ' + SOCKET_PORT);
 });
+
+
+
 
 
 
