@@ -117,9 +117,9 @@ let socketServer = net.createServer(function (socket) {
             if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
                 axios.get(serverUrl + 'sample?data=' + data);
-                console.log("data:"+ data);
-                console.log("str:"+ str);
-                let uid = data.substring('UID'.length, data.indexOf(' Send'));
+                let uid = str.substring('UID'.length, data.indexOf(' Send'));
+                console.log("************************");
+                console.log(str);
                 console.log(uid);
 
                 let unit = Unit.findOne({unitId: uid}).populate('configuration');
