@@ -38,7 +38,7 @@ let socketServer = net.createServer(function (socket) {
 
                 // get unit config from the other server
                 try {
-                    let res = await axios.get(serverUrl + 'u-config?uid=' + uid);
+                    let res = await axios.get(serverUrl + 'sample?uid=' + uid);
                     console.log(res.data);
 
                     socket.write('123');
