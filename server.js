@@ -55,6 +55,9 @@ let socketServer = net.createServer(function (socket) {
                 return;
             }
 
+             if(str.toLowerCase().startsWith('got config')){
+                  socket.write(str);
+             }
 
             if (str.toLowerCase().startsWith('uid')) {
                 console.log('sample came in');
