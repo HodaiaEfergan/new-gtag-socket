@@ -52,7 +52,7 @@ let socketServer = net.createServer(function (socket) {
                      socket.write("test5");
                     console.error('could not get unit config ', e);
                 }
-                return;
+                //return;
             }
 
              if(str.toLowerCase().startsWith('got config')){
@@ -64,6 +64,7 @@ let socketServer = net.createServer(function (socket) {
                 axios.get(serverUrl + 'sample?data=' + data);
                 return;
             }
+             return;
 
 
             console.log('invalid data');
