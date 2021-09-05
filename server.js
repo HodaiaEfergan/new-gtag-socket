@@ -32,8 +32,7 @@ let socketServer = net.createServer(function (socket) {
         try {
             if (data == null) return;
             let str = data.toString();
-             socket.write("test2");
-             socket.write('data came in', str);
+             socket.write(str);
              console.log('data came in', str);
 
             if (str.toLowerCase().endsWith('send configuration')) {
