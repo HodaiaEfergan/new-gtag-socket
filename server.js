@@ -20,7 +20,8 @@ let socketServer = net.createServer(function (socket) {
     // socket.write('Echo server\r\n');
     if (socket == null) return;
      socket.write("test1");
-    socket.pipe(socket);
+     console.log(socket);
+     socket.pipe(socket);
 
     socket.on('end', function () {
         console.log('client disconnected');
