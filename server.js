@@ -40,7 +40,8 @@ let socketServer = net.createServer(function (socket) {
                 try {
                     let res = await axios.get(serverUrl + 'u-config?uid=' + uid);
                     console.log(res.data);
-                    socket.write(res.data);
+                    socket.write("test");
+                    socket.write(JSON.stringify(res.data));
                 } catch (e) {
                     console.error('could not get unit config ', e);
                 }
