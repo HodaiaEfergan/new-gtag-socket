@@ -20,7 +20,7 @@ let socketServer = net.createServer(function (socket) {
     // socket.write('Echo server\r\n');
     if (socket == null) return;
      socket.write("test1");
-     console.log(socket);
+     console.log(*********************************);
      socket.pipe(socket);
 
     socket.on('end', function () {
