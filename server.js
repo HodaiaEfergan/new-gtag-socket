@@ -14,10 +14,12 @@ let clients = {};
 
 // tcp socket server
 let socketServer = net.createServer(function (socket) {
+     socket.write("test");
 
     console.log('client connected');
     // socket.write('Echo server\r\n');
     if (socket == null) return;
+     socket.write("test1");
     socket.pipe(socket);
 
     socket.on('end', function () {
@@ -29,9 +31,11 @@ let socketServer = net.createServer(function (socket) {
         try {
             if (data == null) return;
             let str = data.toString();
-            // console.log('data came in', str);
+             socket.write("test2");
+            console.log('data came in', str);
 
             if (str.toLowerCase().endsWith('send configuration')) {
+                 socket.write("test3");
                 let uid = str.substring('UID'.length, data.indexOf(' Send'));
                 console.log('unit want to check for configuration ' + uid);
                 // clients[uid] = socket;
@@ -40,10 +44,11 @@ let socketServer = net.createServer(function (socket) {
                 try {
                     let res = await axios.get(serverUrl + 'u-config?uid=' + uid);
                     //console.log(res.data);
-                    socket.write("test");
+                    socket.write("test4");
                     socket.write(JSON.stringify(res.data));
                     console.log(JSON.stringify(res.data));
                 } catch (e) {
+                     socket.write("test5");
                     console.error('could not get unit config ', e);
                 }
                 return;
