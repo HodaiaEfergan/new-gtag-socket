@@ -14,12 +14,12 @@ let clients = {};
 
 // tcp socket server
 let socketServer = net.createServer(function (socket) {
-     socket.write("test");
+     //socket.write("test");
 
     console.log('client connected');
     // socket.write('Echo server\r\n');
     if (socket == null) return;
-     socket.write("test1");
+     //socket.write("test1");
      console.log("*********************************");
      socket.pipe(socket);
 
